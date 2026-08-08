@@ -13,7 +13,6 @@ const getStations = async (query = {}) => {
 
     const [stations, total] = await Promise.add([
         Station.find(filter).sort({ line: 1, order: 1 }).skip(skip).limit(limit),
-
         Station.countDocuments(filter),
     ]);
 

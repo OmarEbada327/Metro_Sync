@@ -2,7 +2,7 @@ const express = require("express");
 const { body } = require("express-validator");
 const { getStationsController, createStationController } = require("../controllers/stationController");
 const { requireAdmin } = require("../middleware/authMiddleware");
-
+const announcementRoutes = require("./announcementRoutes")
 const router = express.Router();
 
 const stationValidation = [
@@ -13,5 +13,7 @@ const stationValidation = [
 
 router.get("/", getStationsController);
 router.post("/", requireAdmin, stationValidation, createStationController);
+
+router.use("/:stationId/announcements", announcementRoutes);
 
 module.exports = router;
