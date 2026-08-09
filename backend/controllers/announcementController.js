@@ -1,7 +1,7 @@
-const { validationResult } = require("express-validatior");
+const { validationResult } = require("express-validator");
 const { getAnnouncementsByStation, createAnnouncement } = require("../services/announcementService");
 
-const getAnnouncements = async (req, res, next) => {
+const getAnnouncementsController = async (req, res, next) => {
     try{
         const { stationId } = req.params;
         const result = await getAnnouncementsByStation(stationId, req.query);
@@ -12,7 +12,7 @@ const getAnnouncements = async (req, res, next) => {
     }
 };
 
-const createAnnouncements = async (req, res, next) => {
+const createAnnouncementController = async (req, res, next) => {
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
@@ -34,10 +34,10 @@ const createAnnouncements = async (req, res, next) => {
             io.to(stationId).emit("newAnnouncement", announcement);
         }
 
-        return res.status(201).json({ success: true, data: announcemen });
+        return res.status(201).json({ success: true, data: announcement });
     } catch (error) {
         return next(error);
     }
 };
 
-module.exports = { getAnnouncements, createAnnouncements };
+module.exports = { getAnnouncementsController, createAnnouncementController };
