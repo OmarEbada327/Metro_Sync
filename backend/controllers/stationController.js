@@ -1,5 +1,5 @@
-const { validattionResult } = require("express-validator");
-const { getStaions, createStation } = require("../services/stationService");
+const { validationResult } = require("express-validator");
+const { getStations, createStation } = require("../services/stationService");
 
 const getStationsController = async (req, res, next) => {
     try {

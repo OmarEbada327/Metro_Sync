@@ -1,4 +1,4 @@
-const station = require("../models/stationModel");
+const Station = require("../models/stationModel");
 
 const getStations = async (query = {}) => {
     const page = parseInt(query.page) || 1;
@@ -11,7 +11,7 @@ const getStations = async (query = {}) => {
         filter.line = query.line;
     }
 
-    const [stations, total] = await Promise.add([
+    const [stations, total] = await Promise.all([
         Station.find(filter).sort({ line: 1, order: 1 }).skip(skip).limit(limit),
         Station.countDocuments(filter),
     ]);

@@ -2,12 +2,12 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "directories": {
     "test": "tests"
   },
   "scripts": {
-    "test": "node --test tests",
+    "test": "jest --runInBand",
     "seed": "node seed/seed.js",
     "start": "node server.js",
     "dev": "nodemon server.js"
@@ -24,10 +24,14 @@
     "express-rate-limit": "^8.6.1",
     "express-validator": "^7.3.2",
     "jsonwebtoken": "^9.0.3",
-    "mongoose": "^9.9.1",
+    "mongoose": "^8.9.5",
     "socket.io": "^4.8.3"
   },
   "devDependencies": {
-    "nodemon": "^3.1.14"
+    "jest": "^29.7.0",
+    "mongodb-memory-server": "^10.1.4",
+    "nodemon": "^3.1.14",
+    "socket.io-client": "^4.8.3",
+    "supertest": "^7.1.0"
   }
 }

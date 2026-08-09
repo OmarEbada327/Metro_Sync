@@ -8,7 +8,7 @@ const announcementSchema = new mongoose.Schema({
         maxlength: 500
     },
     stationId: {
-        type: mongooose.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "Station",
         required: true
     },
