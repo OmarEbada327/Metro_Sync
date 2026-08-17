@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Metro Live</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="brand">METRO <span class="brand-accent">LIVE</span></div>
+    <div class="topbar-right">
+      <div class="conn-status" id="connStatus">
+        <span class="dot dot-off" id="connDot"></span>
+        <span id="connLabel">Connecting…</span>
+      </div>
+      <div id="authArea">
+        <button class="btn btn-ghost" id="signInBtn">Admin Sign In</button>
+      </div>
+    </div>
+  </header>
+
+  <div id="toast" class="toast" hidden></div>
+
+  <main class="layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-title">Stations</div>
+      <div id="lineList" class="line-list">
+        <div class="empty-hint">Loading stations…</div>
+      </div>
+    </aside>
+
+    <section class="board">
+      <div id="boardEmpty" class="board-empty">
+        <div class="board-empty-title">SELECT A STATION</div>
+        <div class="board-empty-sub">Choose a station from the list to view its live announcement board.</div>
+      </div>
+
+      <div id="boardContent" class="board-content" hidden>
+        <div class="board-header">
+          <div>
+            <div class="station-name" id="stationName">—</div>
+            <div class="station-line" id="stationLine">—</div>
+          </div>
+          <div class="viewers" id="viewerCount">
+            <span class="dot dot-amber"></span>
+            <span id="viewerNumber">0</span> watching
+          </div>
+        </div>
+
+        <div class="announcement-list" id="announcementList"></div>
+
+        <div class="board-footer">
+          <button class="btn btn-outline" id="loadMoreBtn" hidden>Load earlier announcements</button>
+        </div>
+
+        <div class="composer" id="composer" hidden>
+          <textarea id="composerText" maxlength="500" placeholder="Post an announcement to this station…" rows="2"></textarea>
+          <div class="composer-row">
+            <span class="composer-count" id="composerCount">0 / 500</span>
+            <button class="btn btn-primary" id="postBtn">Post</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal-overlay" id="loginOverlay" hidden>
+    <div class="modal">
+      <div class="modal-title">Admin Sign In</div>
+      <div class="modal-error" id="loginError" hidden></div>
+      <label class="field">
+        <span>Email</span>
+        <input type="email" id="loginEmail" autocomplete="username" />
+      </label>
+      <label class="field">
+        <span>Password</span>
+        <input type="password" id="loginPassword" autocomplete="current-password" />
+      </label>
+      <div class="modal-actions">
+        <button class="btn btn-ghost" id="loginCancelBtn">Cancel</button>
+        <button class="btn btn-primary" id="loginSubmitBtn">Sign In</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

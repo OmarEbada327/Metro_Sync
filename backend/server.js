@@ -21,4 +21,4 @@ const startServer = async () => {
 
 startServer();
 
-module.exports = server
+module.exports = server;
