@@ -104,8 +104,8 @@ function renderAuthArea() {
     const btn = document.createElement("button");
     btn.className = "btn btn-ghost";
     btn.id = "signInBtn";
+    btn.type = "button";
     btn.textContent = "Admin Sign In";
-    btn.addEventListener("click", openLogin);
     el.authArea.appendChild(btn);
   }
   renderComposerVisibility();
@@ -384,6 +384,9 @@ function connectSocket() {
 el.loadMoreBtn.addEventListener("click", () => loadAnnouncements(false));
 el.composerText.addEventListener("input", updateComposerCount);
 el.postBtn.addEventListener("click", submitAnnouncement);
+el.authArea.addEventListener("click", (e) => {
+  if (e.target.closest("#signInBtn")) openLogin();
+});
 el.loginCancelBtn.addEventListener("click", closeLogin);
 el.loginSubmitBtn.addEventListener("click", submitLogin);
 el.loginOverlay.addEventListener("click", (e) => {
