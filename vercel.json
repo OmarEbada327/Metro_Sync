@@ -1,9 +1,4 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "outputDirectory": "Frontend",
-  "functions": {
-    "api/[...path].js": {
-      "maxDuration": 60
-    }
-  }
+  "outputDirectory": "Frontend" 
 }
