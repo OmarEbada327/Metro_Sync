@@ -1,6 +1,6 @@
 // ---------- Configuration ----------
-// Change this if your backend runs somewhere other than localhost:3000
-const API_BASE = "http://localhost:3000";
+// Set window.METRO_API_BASE in js/config.js before deploying the frontend.
+const API_BASE = window.METRO_API_BASE || "http://localhost:3000";
 
 // ---------- State ----------
 const state = {
