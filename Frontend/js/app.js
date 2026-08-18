@@ -1,5 +1,5 @@
 // ---------- Configuration ----------
-// Set window.METRO_API_BASE in js/config.js before deploying the frontend.
+// js/config.js selects the same-origin Vercel API in production and localhost in development.
 const API_BASE = window.METRO_API_BASE || "http://localhost:3000";
 
 // ---------- State ----------
@@ -400,4 +400,8 @@ document.addEventListener("keydown", (e) => {
 // ---------- Init ----------
 renderAuthArea();
 loadStations();
-connectSocket();
+if (window.METRO_REALTIME_ENABLED) {
+  connectSocket();
+} else {
+  el.connLabel.textContent = "Live updates unavailable";
+}
